@@ -1,0 +1,13 @@
+## DEVELOPMENT PROFILE CONFIGURATION ##
+#
+# This file is included when the 'dev' spring profile is selected
+##
+
+#Database
+spring:
+  datasource:
+    schema: classpath:/data/h2/schema.sql
+    data: classpath:/data/h2/import.sql
+
+#Custom
+profileName: Development

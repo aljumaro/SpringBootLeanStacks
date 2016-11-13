@@ -1,0 +1,39 @@
+## BASE CONFIGURATION ##
+#
+# This file is included independently of the active profile selected
+##
+
+#Hibernate
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+#Logging
+logging:
+  level:
+    org:
+      springframework:
+        transaction: DEBUG
+
+#Actuator
+management:
+  context-path: /app-console
+
+#Actuator info endpoint content
+info:
+  app:
+    name: SpringBootLeanStacks
+    description: Spring Boot Lean Stacks youtube playlist
+  build:
+    group: @project.groupId@
+    artifact: @project.artifactId@
+    version: @project.version@
+
+#Custom
+batch:
+  greeting:
+    fixedrate: 15000
+    fixeddelay: 15000
+    initialdelay: 5000
+    cron: 10,40 * * * * *

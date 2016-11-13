@@ -1,0 +1,13 @@
+## PRODUCTION PROFILE CONFIGURATION ##
+#
+# This file is included when the 'pro' spring profile is selected
+##
+
+#Hibernate
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+#Custom
+profileName: Production
