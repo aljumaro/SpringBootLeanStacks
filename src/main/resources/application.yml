@@ -9,13 +9,6 @@ spring:
     hibernate:
       ddl-auto: validate
 
-#Logging
-logging:
-  level:
-    org:
-      springframework:
-        transaction: DEBUG
-
 #Actuator
 management:
   context-path: /app-console

@@ -9,5 +9,12 @@ spring:
     schema: classpath:/data/h2/schema.sql
     data: classpath:/data/h2/import.sql
 
+#Logging
+logging:
+  level:
+    com:
+      aljumaro:
+        techtest: DEBUG
+
 #Custom
 profileName: Development

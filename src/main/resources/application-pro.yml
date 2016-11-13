@@ -9,5 +9,12 @@ spring:
     hibernate:
       ddl-auto: validate
 
+#Logging
+logging:
+  level:
+    com:
+      aljumaro:
+        techtest: ERROR
+
 #Custom
 profileName: Production

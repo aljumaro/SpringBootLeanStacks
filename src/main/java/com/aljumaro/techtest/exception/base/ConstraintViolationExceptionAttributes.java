@@ -30,7 +30,7 @@ public class ConstraintViolationExceptionAttributes implements ExceptionAttribut
 
     private static Object buildMessage(ConstraintViolationException exception) {
 
-        StringBuilder builder = new StringBuilder("There was a constraint violation exception [");
+        StringBuilder builder = new StringBuilder("There was a exception with the entity [");
 
         exception.getConstraintViolations().forEach(cv -> {
             builder.append(String.format("Property %s %s", cv.getPropertyPath(), cv.getMessage()));
