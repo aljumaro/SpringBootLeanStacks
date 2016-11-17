@@ -2,7 +2,7 @@ package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage
 
 import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.ConstraintExceptionProperty;
 import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.ExceptionMessage;
-import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.AbstractFactory;
+import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.ExceptionMessageAbstractFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * @Time 23:41
  * @Author Juanma
  */
-public class ConstraintViolationExceptionMessageFactory extends AbstractFactory<ConstraintViolationException> {
+public class ConstraintViolationExceptionMessageFactoryExceptionMessage extends ExceptionMessageAbstractFactory<ConstraintViolationException> {
 
     public static final String EMPTY_STRING = "";
 

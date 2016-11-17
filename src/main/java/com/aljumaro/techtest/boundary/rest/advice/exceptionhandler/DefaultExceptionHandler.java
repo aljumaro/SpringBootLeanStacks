@@ -1,7 +1,7 @@
 package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler;
 
 import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.ExceptionMessage;
-import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.FactoryProducer;
+import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.ExceptionMessageFactoryProducer;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ public class DefaultExceptionHandler {
 
         _log.error("Handling exception {} with default exception handler", exception.getClass().getName());
 
-        ExceptionMessage exceptionMessage = FactoryProducer.getFactory(exception).getErrorMessage(exception, request);
+        ExceptionMessage exceptionMessage = ExceptionMessageFactoryProducer.getFactory(exception).getErrorMessage(exception, request);
 
         return new ResponseEntity<ExceptionMessage>(exceptionMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }

@@ -17,6 +17,7 @@ public class ExceptionMessage {
     private String path;
     private String exception;
     private Date timestamp;
+    private String documentation;
     private List<ConstraintExceptionProperty> constraintExceptionProperties = new ArrayList<>();
 
     public ExceptionMessage() {
@@ -66,5 +67,13 @@ public class ExceptionMessage {
     public void setConstraintExceptionProperties(
             List<ConstraintExceptionProperty> constraintExceptionProperties) {
         this.constraintExceptionProperties = constraintExceptionProperties;
+    }
+
+    public String getDocumentation() {
+        return documentation;
+    }
+
+    public void setDocumentation(String documentation) {
+        this.documentation = documentation;
     }
 }

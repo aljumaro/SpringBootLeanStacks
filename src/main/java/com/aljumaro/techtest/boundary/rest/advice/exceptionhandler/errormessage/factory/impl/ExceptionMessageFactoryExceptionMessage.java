@@ -1,7 +1,7 @@
 package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.impl;
 
 import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.ExceptionMessage;
-import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.AbstractFactory;
+import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.ExceptionMessageAbstractFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Time 23:38
  * @Author Juanma
  */
-public class ExceptionMessageFactory extends AbstractFactory<Exception> {
+public class ExceptionMessageFactoryExceptionMessage extends ExceptionMessageAbstractFactory<Exception> {
 
     @Override
     public ExceptionMessage getErrorMessage(Exception exception, HttpServletRequest request) {

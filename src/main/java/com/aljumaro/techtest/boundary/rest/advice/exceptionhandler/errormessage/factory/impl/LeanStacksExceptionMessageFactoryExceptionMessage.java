@@ -1,7 +1,7 @@
 package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.impl;
 
 import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.ExceptionMessage;
-import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.AbstractFactory;
+import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.ExceptionMessageAbstractFactory;
 import com.aljumaro.techtest.domain.exception.LeanStacksException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Time 23:44
  * @Author Juanma
  */
-public class LeanStacksExceptionMessageFactory extends AbstractFactory<LeanStacksException> {
+public class LeanStacksExceptionMessageFactoryExceptionMessage extends ExceptionMessageAbstractFactory<LeanStacksException> {
 
     @Override
     public ExceptionMessage getErrorMessage(LeanStacksException exception, HttpServletRequest request) {
