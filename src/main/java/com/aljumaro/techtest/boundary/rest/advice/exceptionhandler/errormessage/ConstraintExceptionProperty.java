@@ -1,10 +1,10 @@
 package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage;
 
-public class ConstraintError {
+public class ConstraintExceptionProperty {
     private String propertyPath;
     private String message;
 
-    public ConstraintError(String propertyPath, String message) {
+    public ConstraintExceptionProperty(String propertyPath, String message) {
         this.propertyPath = propertyPath;
         this.message = message;
     }

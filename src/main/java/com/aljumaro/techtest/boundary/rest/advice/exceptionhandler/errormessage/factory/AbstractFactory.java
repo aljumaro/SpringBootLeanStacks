@@ -1,6 +1,6 @@
 package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory;
 
-import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.ErrorMessage;
+import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.ExceptionMessage;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
  */
 public abstract class AbstractFactory<T extends Exception> {
 
-    protected ErrorMessage setErrorMessageBase(T exception, HttpServletRequest request) {
-        ErrorMessage errorMessage = new ErrorMessage();
-        errorMessage.setPath(request.getServletPath());
-        errorMessage.setException(exception.getClass().getSimpleName());
-        return errorMessage;
+    protected ExceptionMessage setErrorMessageBase(T exception, HttpServletRequest request) {
+        ExceptionMessage exceptionMessage = new ExceptionMessage();
+        exceptionMessage.setPath(request.getServletPath());
+        exceptionMessage.setException(exception.getClass().getSimpleName());
+        return exceptionMessage;
     }
 
-    public abstract ErrorMessage getErrorMessage(T exception, HttpServletRequest request);
+    public abstract ExceptionMessage getErrorMessage(T exception, HttpServletRequest request);
 }

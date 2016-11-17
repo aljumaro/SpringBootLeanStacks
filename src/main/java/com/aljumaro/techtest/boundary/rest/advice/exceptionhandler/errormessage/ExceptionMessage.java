@@ -10,16 +10,16 @@ import java.util.List;
  * @Time 18:31
  * @Author Juanma
  */
-public class ErrorMessage {
+public class ExceptionMessage {
 
     private String code;
     private String description;
     private String path;
     private String exception;
     private Date timestamp;
-    private List<ConstraintError> constraintErrors = new ArrayList<>();
+    private List<ConstraintExceptionProperty> constraintExceptionProperties = new ArrayList<>();
 
-    public ErrorMessage() {
+    public ExceptionMessage() {
         this.timestamp = Calendar.getInstance().getTime();
     }
 
@@ -59,12 +59,12 @@ public class ErrorMessage {
         return timestamp;
     }
 
-    public List<ConstraintError> getConstraintErrors() {
-        return constraintErrors;
+    public List<ConstraintExceptionProperty> getConstraintExceptionProperties() {
+        return constraintExceptionProperties;
     }
 
-    public void setConstraintErrors(
-            List<ConstraintError> constraintErrors) {
-        this.constraintErrors = constraintErrors;
+    public void setConstraintExceptionProperties(
+            List<ConstraintExceptionProperty> constraintExceptionProperties) {
+        this.constraintExceptionProperties = constraintExceptionProperties;
     }
 }

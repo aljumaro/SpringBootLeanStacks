@@ -1,5 +1,8 @@
 package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory;
 
+import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.impl.ConstraintViolationExceptionMessageFactory;
+import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.impl.ExceptionMessageFactory;
+import com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage.factory.impl.LeanStacksExceptionMessageFactory;
 import com.aljumaro.techtest.domain.exception.LeanStacksException;
 
 import javax.validation.ConstraintViolationException;
@@ -14,14 +17,14 @@ public class FactoryProducer {
     public static AbstractFactory getFactory(Exception exception){
 
         if (exception instanceof ConstraintViolationException) {
-            return new ConstraintViolationErrorMessageFactory();
+            return new ConstraintViolationExceptionMessageFactory();
         }
 
         if (exception instanceof LeanStacksException) {
-            return new LeanStacksErrorMessageFactory();
+            return new LeanStacksExceptionMessageFactory();
         }
 
-        return new ErrorMessageFactory();
+        return new ExceptionMessageFactory();
     }
 
 }
