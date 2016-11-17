@@ -1,4 +1,4 @@
-package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.error;
+package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage;
 
 public class ConstraintError {
     private String propertyPath;

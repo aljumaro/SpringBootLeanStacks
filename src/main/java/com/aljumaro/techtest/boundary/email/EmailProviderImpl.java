@@ -30,7 +30,7 @@ public class EmailProviderImpl implements EmailProvider {
         try {
             Thread.sleep(pause);
         } catch (Throwable t){
-            _log.error("Thread.sleep error: ", t);
+            _log.error("Thread.sleep errormessage: ", t);
         }
 
         _log.info("Processing time was {} seconds.", pause / 1000);

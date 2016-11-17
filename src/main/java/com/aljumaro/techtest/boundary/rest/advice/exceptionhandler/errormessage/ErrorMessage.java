@@ -1,5 +1,6 @@
-package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.error;
+package com.aljumaro.techtest.boundary.rest.advice.exceptionhandler.errormessage;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -16,9 +17,9 @@ public class ErrorMessage {
     private String path;
     private String exception;
     private Date timestamp;
-    private List<ConstraintError> constraintErrors;
+    private List<ConstraintError> constraintErrors = new ArrayList<>();
 
-    protected ErrorMessage() {
+    public ErrorMessage() {
         this.timestamp = Calendar.getInstance().getTime();
     }
 
