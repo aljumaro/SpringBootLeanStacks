@@ -1,13 +1,10 @@
 package com.aljumaro.techtest.boundary.rest;
 
 import com.aljumaro.techtest.boundary.email.EmailProvider;
-import com.aljumaro.techtest.boundary.rest.base.BaseController;
 import com.aljumaro.techtest.domain.greeting.Greeting;
 import com.aljumaro.techtest.domain.greeting.GreetingService;
-import com.aljumaro.techtest.infrastructure.ProfilePropertiesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +19,9 @@ import java.util.concurrent.Future;
  * @Author Juanma
  */
 @RestController
-public class GreetingController extends BaseController{
+public class GreetingController {
+
+    private final Logger _log = LoggerFactory.getLogger(this.getClass());
 
     private GreetingService greetingService;
     private EmailProvider emailProvider;

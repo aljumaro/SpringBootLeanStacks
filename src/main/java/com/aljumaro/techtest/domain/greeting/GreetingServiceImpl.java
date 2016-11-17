@@ -1,12 +1,14 @@
 package com.aljumaro.techtest.domain.greeting;
 
+import com.aljumaro.techtest.domain.exception.ErrorCodes;
+import com.aljumaro.techtest.domain.exception.greeting.GreetingValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
-import javax.persistence.EntityExistsException;
 import java.util.Collection;
 
 /**
@@ -40,32 +42,35 @@ public class GreetingServiceImpl implements GreetingService {
 
     @Override
     public Greeting create(Greeting greeting) {
-        if (greeting.getId() != null) {
-            _log.error(
-                    "Attempted to create a Greeting, but id attribute was not null.");
-
-            throw new EntityExistsException("The id attribute must be null to persist a new entity.");
-        }
-
+        validateGreetingIdIsNull(greeting);
         return greetingRepository.save(greeting);
     }
 
     @Override
     public Greeting update(Greeting greeting) {
-        Greeting toUpdate = findOne(greeting.getId());
-
-        if (toUpdate == null) {
-            _log.error(
-                    "Attempted to update a Greeting, but the entity does not exist.");
-
-            throw new EntityExistsException("Requested entity not found.");
-        }
-
+        validateGreetingExists(greeting.getId());
         return greetingRepository.save(greeting);
     }
 
     @Override
     public void delete(Long id) {
+        validateGreetingExists(id);
         greetingRepository.delete(id);
+    }
+
+    private void validateGreetingExists(Long id) {
+        if (findOne(id) == null){
+            throw new GreetingValidationException(
+                    ErrorCodes.GREETING_VALIDATION_NOT_FOUND.getCode(),
+                    "The greeting does not exist.");
+        }
+    }
+
+    private void validateGreetingIdIsNull(Greeting greeting) {
+        if (greeting.getId() != null) {
+            throw new GreetingValidationException(
+                    ErrorCodes.GREETING_VALIDATION_ID_FOUND.getCode(),
+                    "Attempted to create a Greeting, but id attribute was not null.");
+        }
     }
 }
