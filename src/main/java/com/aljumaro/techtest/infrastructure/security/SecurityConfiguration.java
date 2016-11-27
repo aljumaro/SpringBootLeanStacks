@@ -37,7 +37,6 @@ public class SecurityConfiguration {
     }
 
     @Configuration
-    @Order(1)
     public static class ApiWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
         @Override
@@ -46,9 +45,9 @@ public class SecurityConfiguration {
 
             http
               .csrf().disable()
-              .antMatcher("/api/**")
                  .authorizeRequests()
-                    .anyRequest().hasRole("USER")
+                    .antMatchers("/api/**").hasRole("USER")
+                    .antMatchers("/app-console/**").hasRole("SYSADMIN")
             .and()
             .httpBasic()
             .and()
@@ -58,28 +57,4 @@ public class SecurityConfiguration {
             // @formatter:on
         }
     }
-
-    @Configuration
-    @Order(2)
-    public static class ActuatorWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
-
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            // @formatter:off
-
-            http
-              .csrf().disable()
-              .antMatcher("/app-console/**")
-                .authorizeRequests()
-                  .anyRequest().hasRole("SYSADMIN")
-            .and()
-            .httpBasic()
-            .and()
-            .sessionManagement()
-              .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-            // @formatter:on
-        }
-    }
-
 }

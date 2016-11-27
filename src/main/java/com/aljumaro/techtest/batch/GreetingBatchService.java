@@ -2,7 +2,6 @@ package com.aljumaro.techtest.batch;
 
 import com.aljumaro.techtest.domain.greeting.Greeting;
 import com.aljumaro.techtest.domain.greeting.GreetingService;
-import com.aljumaro.techtest.infrastructure.ProfilePropertiesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -20,17 +19,13 @@ public class GreetingBatchService {
     private static final Logger _log = LoggerFactory.getLogger(GreetingBatchService.class);
 
     private GreetingService greetingService;
-    private ProfilePropertiesService profilePropertiesService;
 
-    public GreetingBatchService(GreetingService greetingService, ProfilePropertiesService profilePropertiesService) {
+    public GreetingBatchService(GreetingService greetingService) {
         this.greetingService = greetingService;
-        this.profilePropertiesService = profilePropertiesService;
     }
 
     //@Scheduled(cron = "${batch.greeting.cron}")
     public void cronJob(){
-        _log.info(">>>>>>>>>>>> cronJob in {}", profilePropertiesService.getProfileName());
-
         Collection<Greeting> greetings = greetingService.findAll();
         _log.info("There are {} greetings in the data store", greetings.size());
 

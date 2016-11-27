@@ -1,5 +1,6 @@
 package com.aljumaro.techtest.infrastructure.security;
 
+import com.aljumaro.techtest.domain.account.Account;
 import com.aljumaro.techtest.domain.account.AccountUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -9,6 +10,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import java.util.Collections;
 
 /**
  * @Date 13/11/2016
@@ -20,6 +24,7 @@ public class AccountAuthenticationProvider extends AbstractUserDetailsAuthentica
 
     private AccountUserDetailService accountUserDetailService;
     private PasswordEncoder passwordEncoder;
+    private static final Account UNAUTHORIZED = new Account("Unauthorized", "");
 
     @Autowired
     public void setAccountUserDetailService(
@@ -50,6 +55,10 @@ public class AccountAuthenticationProvider extends AbstractUserDetailsAuthentica
     protected UserDetails retrieveUser(String username,
                                        UsernamePasswordAuthenticationToken token)
             throws AuthenticationException {
-        return accountUserDetailService.loadUserByUsername(username);
+        UserDetails userDetails = accountUserDetailService.loadUserByUsername(username);
+        if (userDetails == null) {
+            return UNAUTHORIZED.toUser();
+        }
+        return userDetails;
     }
 }

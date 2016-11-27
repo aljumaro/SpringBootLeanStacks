@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @Date 12/11/2016
@@ -31,7 +31,8 @@ public class GreetingServiceImpl implements GreetingService {
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Collection<Greeting> findAll() {
-        return greetingRepository.findAll();
+        List<Greeting> all = greetingRepository.findAll();
+        return all;
     }
 
     @Override

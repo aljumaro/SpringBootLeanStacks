@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 /**
@@ -57,6 +58,12 @@ public class Account {
     private Set<Role> roles;
 
     public Account() {
+    }
+
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.roles = Collections.emptySet();
     }
 
     public Long getId() {
